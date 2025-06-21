@@ -269,7 +269,7 @@ export const App = () => {
             target="_blank"
             className="underline"
           >
-            {"Aiko"}
+            {t("inspiredBy")}
           </a>
         </div>
         <div className="text-center text-sm text-gray-600">
