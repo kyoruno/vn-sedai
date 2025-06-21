@@ -1,33 +1,41 @@
-name: Deploy Bun + TS App to GitHub Pages
+name: Build & Deploy to GitHub Pages
+
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
-jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
+permissions:
+  pages: write
+  id-token: write
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+
+      - name: Install & Build
+        run: |
+          bun install
+          bun run build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          bun-version: 'latest'
+          path: ./dist
 
-      - name: Install Dependencies
-        run: bun install
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-      - name: Build App
-        run: bun run build
-
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          branch: gh-pages
-          folder: dist
