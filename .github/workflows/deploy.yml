@@ -24,9 +24,9 @@ jobs:
           bun run build
 
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist  # Your output directory
 
   deploy:
     needs: build
