@@ -423,7 +423,7 @@ const data: Data = {
       "ID": "v515",
       "titleEn": "Cartagra ~Affliction of the Soul~",
       "titleJa": "カルタグラ～ツキ狂イノ病～",
-      "score": 72.7
+      "score": 72.8
     },
     {
       "ID": "v12",
@@ -1379,7 +1379,7 @@ const data: Data = {
       "ID": "v22020",
       "titleEn": "NEKOPARA Extra",
       "titleJa": "ネコぱらExtra  仔ネコの日の約束",
-      "score": 68.5
+      "score": 68.4
     },
     {
       "ID": "v17827",
@@ -1527,7 +1527,7 @@ const data: Data = {
       "ID": "v26052",
       "titleEn": "NEKOPARA Vol. 4",
       "titleJa": "ネコぱらvol.4～ネコとパティシエのノエル～",
-      "score": 74.3
+      "score": 74.2
     },
     {
       "ID": "v28633",

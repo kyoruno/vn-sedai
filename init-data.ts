@@ -10,7 +10,7 @@ async function fetchVNsByYear(year: number) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      filters: ["and", ["released", ">", `${year}-01-01`], ["released", "<", `${year + 1}-01-01`]],
+      filters: ["and", ["released", ">=", `${year}-01-01`], ["released", "<", `${year + 1}-01-01`]],
       sort: "votecount",
       reverse: true,
       results: 12,
