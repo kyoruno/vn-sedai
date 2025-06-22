@@ -5,6 +5,7 @@ import { toast } from "sonner"
 import { usePersistState } from "./hooks"
 import { useI18n } from "./i18n-context"
 import { LanguageToggle } from "./LanguageToggle"
+import * as ContextMenu from '@radix-ui/react-context-menu';
 
 export const App = () => {
   const { t, language } = useI18n()
@@ -122,47 +123,66 @@ export const App = () => {
                         const displayTitle = getAnimeTitle(item, language)
                         const isSelected = selectedAnime.includes(animeKey)
                         return (
-                          <button
-                            key={animeKey}
-                            className={`
-                              h-16 md:h-20 
-                              ${
-                                language === "en"
-                                  ? "w-20 md:w-24"
-                                  : "w-16 md:w-20"
-                              }
-                              border-l break-words text-center shrink-0 inline-flex items-center 
-                              p-1 overflow-hidden justify-center cursor-pointer 
-                              ${language === "en" ? "text-xs" : "text-sm"} 
-                              ${
-                                isSelected
-                                  ? "bg-purple-500 font-bold text-white border-black"
-                                  : "hover:bg-zinc-100"
-                              }
-                              transition-colors duration-200
-                            `}
-                            title={displayTitle}
-                            onClick={() => {
-                              setSelectedAnime((prev) => {
-                                if (isSelected) {
-                                  return prev.filter(
-                                    (title) => title !== animeKey,
-                                  )
-                                }
-                                return [...prev, animeKey]
-                              })
-                            }}
-                          >
-                            <span
-                              className={`leading-tight w-full ${
-                                language === "en"
-                                  ? "line-clamp-4"
-                                  : "line-clamp-3"
-                              }`}
-                            >
-                              {displayTitle}
-                            </span>
-                          </button>
+                          <ContextMenu.Root>
+                            <ContextMenu.Trigger>
+                              <button
+                                key={animeKey}
+                                className={`
+                                  h-16 md:h-20 
+                                  ${
+                                    language === "en"
+                                      ? "w-20 md:w-24"
+                                      : "w-16 md:w-20"
+                                  }
+                                  border-l break-words text-center shrink-0 inline-flex items-center 
+                                  p-1 overflow-hidden justify-center cursor-pointer 
+                                  ${language === "en" ? "text-xs" : "text-sm"} 
+                                  ${
+                                    isSelected
+                                      ? "bg-purple-500 font-bold text-white border-black"
+                                      : "hover:bg-zinc-100"
+                                  }
+                                  transition-colors duration-200
+                                `}
+                                title={displayTitle}
+                                onClick={() => {
+                                  setSelectedAnime((prev) => {
+                                    if (isSelected) {
+                                      return prev.filter(
+                                        (title) => title !== animeKey,
+                                      )
+                                    }
+                                    return [...prev, animeKey]
+                                  })
+                                }}
+                              >
+                                <span
+                                  className={`leading-tight w-full ${
+                                    language === "en"
+                                      ? "line-clamp-4"
+                                      : "line-clamp-3"
+                                  }`}
+                                >
+                                  {displayTitle}
+                                </span>
+                              </button>
+                            </ContextMenu.Trigger>
+                              <ContextMenu.Content className="rounded bg-white shadow p-2">
+                              <ContextMenu.Label className="ContextMenuLabel text-zinc-700 flex justify-center items-center px-2 py-1">
+                                {displayTitle}
+                              </ContextMenu.Label>
+                              <ContextMenu.Separator className="h-px bg-gray-300 my-1" />
+                              <ContextMenu.Item asChild className="hover:bg-gray-200 px-2 py-1 cursor-pointer">
+                                <a
+                                  href={`https://vndb.org/${item.ID}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Open VNDB
+                                </a>
+                              </ContextMenu.Item>
+                            </ContextMenu.Content>
+                          </ContextMenu.Root>
                         )
                       })}
                       {Array.from(

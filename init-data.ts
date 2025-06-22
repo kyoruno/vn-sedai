@@ -14,11 +14,12 @@ async function fetchVNsByYear(year: number) {
       sort: "votecount",
       reverse: true,
       results: 12,
-      fields: "rating,title,titles{lang,title,latin}",
+      fields: "id,rating,title,titles{lang,title,latin}",
     }),
   })
   const data = await res.json()
   return data.results.map((vn: any) => ({
+    ID: vn.id,
     titleEn: vn.titles?.find((t: any) => t.lang === "en")?.title ?? vn.title,
     titleJa: vn.titles?.find((t: any) => t.lang === "ja")?.title ?? vn.title,
     score: Math.round(vn.rating * 100) / 100,
