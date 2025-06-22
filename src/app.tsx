@@ -123,8 +123,8 @@ export const App = () => {
                         const displayTitle = getAnimeTitle(item, language)
                         const isSelected = selectedAnime.includes(animeKey)
                         return (
-                          <ContextMenu.Root>
-                            <ContextMenu.Trigger>
+                          <ContextMenu.Root key={animeKey}>
+                            <ContextMenu.Trigger asChild>
                               <button
                                 key={animeKey}
                                 className={`
@@ -168,11 +168,11 @@ export const App = () => {
                               </button>
                             </ContextMenu.Trigger>
                               <ContextMenu.Content className="rounded bg-white shadow p-2">
-                              <ContextMenu.Label className="ContextMenuLabel text-zinc-700 flex justify-center items-center px-2 py-1">
+                              <ContextMenu.Label className="ContextMenuLabel text-zinc-500 flex justify-center items-center px-2 py-1">
                                 {displayTitle}
                               </ContextMenu.Label>
                               <ContextMenu.Separator className="h-px bg-gray-300 my-1" />
-                              <ContextMenu.Item asChild className="hover:bg-gray-200 px-2 py-1 cursor-pointer">
+                              <ContextMenu.Item asChild className="hover:text-blue-500 transition-colors duration-200 px-2 py-1 cursor-pointer">
                                 <a
                                   href={`https://vndb.org/${item.ID}`}
                                   target="_blank"
