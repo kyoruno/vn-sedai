@@ -101,7 +101,7 @@ export const App = () => {
                   <div key={year} className="flex border-b">
                     <div
                       className={`
-                      bg-blue-500 shrink-0 text-white flex items-center font-bold justify-center p-1 border-black
+                      bg-yellow-500 shrink-0 text-white flex items-center font-bold justify-center p-1 border-black
                       h-16 md:h-20 
                       ${language === "en" ? "w-16 md:w-20" : "w-16 md:w-20"}
                     `}
