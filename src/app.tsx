@@ -301,8 +301,17 @@ export const App = () => {
             >
               Anime Sedai
             </a>
+          {" - "}
+          {t("madeBy")}
+            <a
+              href="https://x.com/kyorunobu"
+              target="_blank"
+              className="underline font-bold"
+            >
+              {t("creator")}
+            </a>
+          </div>
         </div>
-      </div>
     </>
   )
 }
