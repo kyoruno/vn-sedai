@@ -167,12 +167,12 @@ export const App = () => {
                                 </span>
                               </button>
                             </ContextMenu.Trigger>
-                              <ContextMenu.Content className="rounded bg-white shadow p-2">
-                              <ContextMenu.Label className="ContextMenuLabel text-zinc-500 flex justify-center items-center px-2 py-1">
+                              <ContextMenu.Content className="rounded bg-white shadow-xl border-1 p-2 w-50 sm:w-80">
+                              <ContextMenu.Label className="ContextMenuLabel text-zinc-500 flex justify-center items-center px-2 py-1 break-words text-sm">
                                 {displayTitle}
                               </ContextMenu.Label>
                               <ContextMenu.Separator className="h-px bg-gray-300 my-1" />
-                              <ContextMenu.Item asChild className="hover:text-blue-500 transition-colors duration-200 px-2 py-1 cursor-pointer">
+                              <ContextMenu.Item asChild className="block w-full hover:bg-blue-200 hover:text-zinc-500 transition-colors duration-400 px-5 py-2 cursor-pointer font-medium">
                                 <a
                                   href={`https://vndb.org/${item.ID}`}
                                   target="_blank"
